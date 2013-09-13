@@ -36,3 +36,5 @@ TODO
 ====
 
 - `client` recipe
+- Handle sources other than GitHub
+- Work out how to better server `.git` folders; cloning via Apache doesn't appear to work
