@@ -29,11 +29,13 @@ default['source_mirror']['repos'] = {
     'django_session_stashable',
   ],
   'jquery' => 'jquery',
-  'paulmakepeace' => 'refine-client-py',
-  'rboulton' => [
-    'restpose',
-    'restpose-py',
-  ],
+  # HACK: @PaulMakepeace's username doesn't work unless it's capitalised?
+  'PaulMakepeace' => 'refine-client-py',
+  # TODO: Work out where @rboulton has moved this
+  # 'rboulton' => [
+  #   'restpose',
+  #   'restpose-py',
+  # ],
   'sebleier' => 'django-redis-cache',
   'simonw' => [
     'bugle_project',
