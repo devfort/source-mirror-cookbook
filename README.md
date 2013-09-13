@@ -20,7 +20,7 @@ Cookbook attributes are named under the `source_mirror` namespace.
 * `node['source_mirror']['data_dir']` - directory to store source repos in, defaults to '/data/git'
 * `node['source_mirror']['apache']['listen_hostname']` - Hostname to listen on for source repo Apache virtualhost, defaults to '*'
 * `node['source_mirror']['apache']['listen_port']` - Port to listen on for source repo Apache virtualhost, defaults to '80'
-* `node['source_mirror']['repos']` - Hash of repositories to clone.
+* `node['source_mirror']['repos']` - Hash of repositories to clone. Keyed on username, with values being one of repo name, `*` (all repositories for user), or an array of repo names.
 
 Recipes
 =======
