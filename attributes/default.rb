@@ -8,11 +8,12 @@ override['apache']['default_site_enabled'] = false
 
 default['source_mirror']['repos'] = {
   'andymccurdy' => 'redis-py',
+  'artfinder' => 'jquery-equal-height',
   'bfirsh' => 'django-tagging',
   'bradleywright' => 'django-static-management',
   'cliffmoon' => 'dynomite',
-  'devfort' => '*',
   'django' => 'django',
+  'dlanger' => 'inlinestyler',
   'elasticsearch' => 'elasticsearch',
   'ericflo' => 'django-pagination',
   'garethr' => [
@@ -21,15 +22,37 @@ default['source_mirror']['repos'] = {
     'django-project-templates',
     'django-test-extensions',
   ],
+  'jacobian' => [
+     'djangobook.com',
+     'django-shorturls',
+  ],
   'jaylett' => [
     'django_audited_model',
     'django_auto_sluggable',
     'django_concurrent_test_server',
     'django_exceptional_middleware',
     'django_session_stashable',
+    'django-moreviews',
+    'django-render-as',
+    'django-jcache',
+    'django-ballads',
+    'newspan2',
+    'xapian-docsprint',
   ],
-  'jquery' => 'jquery',
-  # HACK: @PaulMakepeace's username doesn't work unless it's capitalised?
+  'jquery' => [
+    'jquery',
+    'sizzle',
+    'jquery-mobile',
+    'jquery-ui',
+    'api.jquery.com',
+    'api.jquerymobile.com',
+    'api.jqueryui.com',
+  ],
+  'LearnBoost' => 'juice',
+  'mirrors' => [
+    'WebKit',
+  ],
+  'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
   # TODO: Work out where @rboulton has moved this
   # 'rboulton' => [
@@ -38,9 +61,11 @@ default['source_mirror']['repos'] = {
   # ],
   'sebleier' => 'django-redis-cache',
   'simonw' => [
-    'bugle_project',
     'django-debug-toolbar',
     'django-openid',
   ],
   'xapian' => 'xapian',
+  'devfort' => '*',
+  'spacelog' => '*',
+  'historymesh' => '*',
 }
