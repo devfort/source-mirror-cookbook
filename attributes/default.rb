@@ -1,4 +1,4 @@
-default['source_mirror']['data_dir'] = 'fort'
+default['source_mirror']['user'] = 'fort'
 default['source_mirror']['data_dir'] = '/data/source'
 
 default['source_mirror']['apache']['listen_hostname'] = '*'
