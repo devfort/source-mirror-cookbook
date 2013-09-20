@@ -20,7 +20,20 @@ EOH
   end
 end
 
+directory node.source_mirror.data_dir do
+  owner node.source_mirror.user
+  group node.source_mirror.user
+  mode "0755"
+  recursive true
+end
+
 node.source_mirror.repos.each do | user, repo |
+  directory "#{node.source_mirror.data_dir}/#{user}" do
+    owner node.source_mirror.user
+    group node.source_mirror.user
+    mode "0755"
+  end
+  
   if repo.is_a?(Array)
     repo.each{ |r|
       mirror_repo("https://github.com/#{user}/#{r}.git", "#{node.source_mirror.data_dir}/#{user}/#{r}.git")

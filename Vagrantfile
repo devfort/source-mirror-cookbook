@@ -13,7 +13,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :chef_solo do |chef|
     chef.json = {
       'source_mirror' => {
-        'data_dir' => '/home/vagrant/source',
         'user' => 'vagrant'
       }
     }
