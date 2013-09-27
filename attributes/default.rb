@@ -54,11 +54,7 @@ default['source_mirror']['repos'] = {
   ],
   'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
-  # TODO: Work out where @rboulton has moved this
-  # 'rboulton' => [
-  #   'restpose',
-  #   'restpose-py',
-  # ],
+  'restpose' => '*',
   'sebleier' => 'django-redis-cache',
   'simonw' => [
     'django-debug-toolbar',
