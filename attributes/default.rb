@@ -1,7 +1,7 @@
 default['source_mirror']['user'] = 'fort'
 default['source_mirror']['data_dir'] = '/data/source'
 
-default['source_mirror']['apache']['listen_hostname'] = '*'
+default['source_mirror']['apache']['listen_hostname'] = 'source.fort'
 default['source_mirror']['apache']['listen_port'] = '80'
 
 override['apache']['default_site_enabled'] = false
