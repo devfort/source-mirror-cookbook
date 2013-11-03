@@ -2,24 +2,6 @@ require "net/http"
 require 'json'
 include_recipe "git"
 
-def mirror_repo(repo_url, local_path)
-  # HACK: su to change user because script/execute doesn't set user (http://tickets.opscode.com/browse/CHEF-1523, via http://serverfault.com/questions/402881/execute-as-vagrant-user-not-root-with-chef-solo)
-  execute "update-#{repo_url}" do
-    command <<-EOH
-      su #{node.source_mirror.user} -lc \
-      'cd #{local_path} git fetch origin +refs/heads/*:refs/heads/*'
-EOH
-    only_if { File.exist?(local_path) }
-  end
-  execute "mirror-#{repo_url}" do
-    command <<-EOH
-      su #{node.source_mirror.user} -lc \
-      'git clone --bare #{repo_url} #{local_path}'
-EOH
-    not_if { File.exist?(local_path) }
-  end
-end
-
 directory node.source_mirror.data_dir do
   owner node.source_mirror.user
   group node.source_mirror.user
@@ -28,27 +10,35 @@ directory node.source_mirror.data_dir do
 end
 
 node.source_mirror.repos.each do | user, repo |
-  directory "#{node.source_mirror.data_dir}/#{user}" do
+  if '*' == repo
+    uri = URI("https://api.github.com/users/#{user}/repos")
+    user_repos = []
+    Net::HTTP.start(uri.host, uri.port,
+      :use_ssl => uri.scheme == 'https') do |http|
+      JSON.load(http.get(uri.path).body).each { |r|
+        user_repos << r['name']
+      }
+    end
+    node.override['source_mirror']['repos'][user] = user_repos
+  end
+end
+
+{
+  "source-mirror.sh.erb" => "#{node.source_mirror.data_dir}/source-mirror.sh",
+  "services/source-mirror.conf.erb"      => "/etc/init/source-mirror.conf",
+  "services/source-mirror-shim.conf.erb" => "/etc/init/source-mirror-shim.conf",
+}.each do |src, target|
+  template target do
+    source src
     owner node.source_mirror.user
     group node.source_mirror.user
     mode "0755"
   end
-  
-  if repo.is_a?(Array)
-    repo.each{ |r|
-      mirror_repo("https://github.com/#{user}/#{r}.git", "#{node.source_mirror.data_dir}/#{user}/#{r}.git")
-    }
-  elsif '*' == repo
-    uri = URI("https://api.github.com/users/#{user}/repos")
-    Net::HTTP.start(uri.host, uri.port,
-      :use_ssl => uri.scheme == 'https') do |http|
-      JSON.load(http.get(uri.path).body).each { |r|
-        mirror_repo(r['clone_url'], "#{node.source_mirror.data_dir}/#{r['full_name']}.git")
-      }
-    end
-  else
-    mirror_repo("https://github.com/#{user}/#{repo}.git", "#{node.source_mirror.data_dir}/#{user}/#{repo}.git")
-  end
+end
+
+service "source-mirror-shim" do
+  provider Chef::Provider::Service::Upstart
+  action :restart
 end
 
 # Serve the gems (when they finish mirroring)
