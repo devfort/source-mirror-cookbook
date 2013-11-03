@@ -4,8 +4,6 @@ default['source_mirror']['data_dir'] = '/data/source'
 default['source_mirror']['apache']['listen_hostname'] = 'source.fort'
 default['source_mirror']['apache']['listen_port'] = '80'
 
-override['apache']['default_site_enabled'] = false
-
 default['source_mirror']['repos'] = {
   'andymccurdy' => 'redis-py',
   'artfinder' => 'jquery-equal-height',
