@@ -50,6 +50,7 @@ default['source_mirror']['repos'] = {
   'mirrors' => [
     'WebKit',
   ],
+  'opscode-cookbooks' => '*',
   'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
   'restpose' => '*',
