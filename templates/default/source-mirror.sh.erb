@@ -6,7 +6,7 @@
 local_dir=<%= node.source_mirror.data_dir %>/<%= repo_owner %>/<%= repo %>.git
 if [ -d $local_dir ] ; then
   cd $local_dir
-  git pull
+  git fetch --tags origin master:master
   cd -
 else
   mkdir -p `dirname $local_dir`
