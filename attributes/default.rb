@@ -6,7 +6,6 @@ default['source_mirror']['apache']['listen_port'] = '80'
 
 default['source_mirror']['repos'] = {
   'andymccurdy' => 'redis-py',
-  'artfinder' => 'jquery-equal-height',
   'bfirsh' => 'django-tagging',
   'bradleywright' => 'django-static-management',
   'cliffmoon' => 'dynomite',
@@ -27,15 +26,16 @@ default['source_mirror']['repos'] = {
   'jaylett' => [
     'django_audited_model',
     'django_auto_sluggable',
-    'django_concurrent_test_server',
     'django_exceptional_middleware',
     'django_session_stashable',
     'django-moreviews',
     'django-render-as',
     'django-jcache',
     'django-ballads',
+    'django-database-constraints',
     'newspan2',
     'xapian-docsprint',
+    'heroku-statsd-example',
   ],
   'jquery' => [
     'jquery',
@@ -47,9 +47,12 @@ default['source_mirror']['repos'] = {
     'api.jqueryui.com',
   ],
   'LearnBoost' => 'juice',
+  'liuliu' => 'ccv',
   'mirrors' => [
     'WebKit',
   ],
+  'mintchaos' => 'typogrify',
+  'mitsuhiko' => 'jsonjinja',
   'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
   'restpose' => '*',
