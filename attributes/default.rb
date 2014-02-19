@@ -50,7 +50,6 @@ default['source_mirror']['repos'] = {
   'mirrors' => [
     'WebKit',
   ],
-  'opscode-cookbooks' => '*',
   'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
   'restpose' => '*',
@@ -63,4 +62,8 @@ default['source_mirror']['repos'] = {
   'devfort' => '*',
   'spacelog' => '*',
   'historymesh' => '*',
+  
+  # Cookbooks
+  'poise' => 'python',
+  'opscode-cookbooks' => '*',
 }
