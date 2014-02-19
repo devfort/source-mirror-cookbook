@@ -13,6 +13,7 @@ default['source_mirror']['repos'] = {
   'dlanger' => 'inlinestyler',
   'elasticsearch' => 'elasticsearch',
   'ericflo' => 'django-pagination',
+  'firebug' => 'firebug',
   'garethr' => [
     'django-clue',
     'django-http-debug',
