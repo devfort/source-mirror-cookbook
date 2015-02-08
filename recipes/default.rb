@@ -1,31 +1,16 @@
-include_recipe "git"
-
-require "net/http"
-require 'json'
+include_recipe 'git'
+chef_gem 'octokit'
+require 'octokit'
 
 # Replace all * instances with names of all the user's repos from GitHub's API
-node.source_mirror.repos.each do | user, repo |
+Octokit.auto_paginate = true
+node['source_mirror']['repos'].each do | user, repo |
   if '*' == repo
-    uri = URI("https://api.github.com/users/#{user}/repos")
-    user_repos = []
-    response = Net::HTTP.start(uri.host, uri.port,
-      :use_ssl => uri.scheme == 'https') do |http|
-      http.get(uri.path)
+    repos = Octokit.repos user
+    user_repos = repos.map do |repo_data|
+      repo_data[:name]
     end
-    json = JSON.load(response.body)
-    
-    case response
-    when Net::HTTPSuccess
-      json.each { |r|
-        user_repos << r['name']
-      }
-      node.override['source_mirror']['repos'][user] = user_repos
-    else
-      log "GitHub error: #{json.message}" do
-        level :error
-      end
-      return
-    end
+    node.override['source_mirror']['repos'][user] = user_repos
   end
 end
 
