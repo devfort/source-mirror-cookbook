@@ -61,17 +61,18 @@ default['source_mirror']['repos'] = {
   'mitsuhiko' => 'jsonjinja',
   'OpenRefine' => 'OpenRefine',
   'PaulMakepeace' => 'refine-client-py',
-  'restpose' => '*',
   'sebleier' => 'django-redis-cache',
   'simonw' => [
     'django-debug-toolbar',
     'django-openid',
   ],
-  'xapian' => 'xapian',
+  'restpose' => '*',
+  'vlfeat' => '*',
+  'xapian' => '*',
   'devfort' => '*',
-  'spacelog' => '*',
   'historymesh' => '*',
-  
+  'spacelog' => '*',
+
   # Cookbooks
   'poise' => 'python',
   'opscode-cookbooks' => '*',
