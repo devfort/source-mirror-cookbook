@@ -24,7 +24,7 @@ default['source_mirror']['repos'] = {
     'django-project-templates',
     'django-test-extensions',
   ],
-  'jacobian' => [
+  'jacobian-archive' => [
      'djangobook.com',
   ],
   'jaylett' => [
