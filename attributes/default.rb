@@ -6,7 +6,10 @@ default['source_mirror']['apache']['listen_port'] = '80'
 
 default['source_mirror']['repos'] = {
   'andymccurdy' => 'redis-py',
-  'bfirsh' => 'django-tagging',
+  'bfirsh' => [
+    'django-shorturls',
+    'django-tagging',
+  ]
   'bradleywright' => 'django-static-management',
   'cliffmoon' => 'dynomite',
   'dariusk' => 'corpora',
@@ -23,7 +26,6 @@ default['source_mirror']['repos'] = {
   ],
   'jacobian' => [
      'djangobook.com',
-     'django-shorturls',
   ],
   'jaylett' => [
     'django-override-db-tables',
