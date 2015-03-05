@@ -9,7 +9,7 @@ default['source_mirror']['repos'] = {
   'bfirsh' => [
     'django-shorturls',
     'django-tagging',
-  ]
+  ],
   'bradleywright' => 'django-static-management',
   'cliffmoon' => 'dynomite',
   'dariusk' => 'corpora',
